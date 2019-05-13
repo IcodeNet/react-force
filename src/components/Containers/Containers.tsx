@@ -5,15 +5,6 @@ import { makeStyles } from '@material-ui/styles';
 import classNames from 'classnames';
 
 const useStyles = makeStyles((theme: Theme) => ({
-    centeredContainer: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        padding: theme.spacing(1)
-    },
     dark: {
         color: theme.palette.common.white,
         backgroundColor: theme.palette.grey.A400
@@ -26,24 +17,36 @@ export interface ContainerProps {
 }
 
 /**
- * CenteredContainer
- * - Flexible (flex: 1)
- * - Centers content using Flexbox
+ * FullHeightCenteredContainer
+ * - Centers content on the entire page (flex: 1)
  */
-export const CenteredContainer: React.FC<ContainerProps> = ({
+export const FullHeightCenteredContainer: React.FC<ContainerProps> = ({
     className: classNameProp,
+    dark,
     children
 }) => {
     const classes = useStyles();
-    const className = classNames(classes.centeredContainer, classNameProp);
-    return <div className={className}>{children}</div>;
+    const className = classNames(dark ? classes.dark : null, classNameProp);
+    return (
+        <Box
+            p={2}
+            flex="1"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            textAlign="center"
+            className={className}
+        >
+            {children}
+        </Box>
+    );
 };
 
 /**
- * PageCenteredContainer
+ * ViewHeightCenteredContainer
  * - Centers content on the entire page (height: 100vh)
  */
-export const PageCenteredContainer: React.FC<ContainerProps> = ({
+export const ViewHeightCenteredContainer: React.FC<ContainerProps> = ({
     className: classNameProp,
     dark,
     children

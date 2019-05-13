@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { PageCenteredContainer } from '..';
+import { ViewHeightCenteredContainer } from '..';
 import { errorToString } from '../../utils';
 
 export interface ErrorFallbackComponentProps {
@@ -10,9 +10,9 @@ export interface ErrorFallbackComponentProps {
 export const ErrorFallbackComponent = ({
     error
 }: ErrorFallbackComponentProps) => (
-    <PageCenteredContainer dark={true}>
+    <ViewHeightCenteredContainer dark={true}>
         <Typography component="h1" variant="h3">
             {errorToString(error)}
         </Typography>
-    </PageCenteredContainer>
+    </ViewHeightCenteredContainer>
 );
