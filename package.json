@@ -33,7 +33,7 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "semantic-release": "semantic-release",
     "test": "jest",
-    "test:prod": "jest --no-cache",
+    "test:prod": "jest --coverage --no-cache",
     "test:watch": "jest --watch"
   },
   "peerDependencies": {
@@ -122,7 +122,11 @@
     }
   },
   "jest": {
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "verbose": true,
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "testRegex": "(\\.(test|spec))\\.(ts|tsx)$",
     "moduleDirectories": [
       "node_modules",
       "src"
@@ -134,10 +138,6 @@
     ],
     "setupFiles": [
       "./src/test/setupTests.ts"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/src/test/"
     ],
     "coverageThreshold": {
       "global": {
