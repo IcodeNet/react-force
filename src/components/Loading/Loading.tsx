@@ -4,7 +4,7 @@ import { ViewHeightCenteredContainer } from '..';
 
 export const Loading = () => {
     return (
-        <ViewHeightCenteredContainer>
+        <ViewHeightCenteredContainer data-testid="loading">
             <Typography variant="h5">Loading...</Typography>
         </ViewHeightCenteredContainer>
     );

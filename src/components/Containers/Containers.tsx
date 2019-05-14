@@ -1,5 +1,5 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
+import Box, { BoxProps } from '@material-ui/core/Box';
 import { Theme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/styles';
 import classNames from 'classnames';
@@ -11,8 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     }
 }));
 
-export interface ContainerProps {
-    className?: string;
+export interface ContainerProps extends BoxProps {
     dark?: boolean;
 }
 
@@ -23,7 +22,8 @@ export interface ContainerProps {
 export const FullHeightCenteredContainer: React.FC<ContainerProps> = ({
     className: classNameProp,
     dark,
-    children
+    children,
+    ...rest
 }) => {
     const classes = useStyles();
     const className = classNames(dark ? classes.dark : null, classNameProp);
@@ -36,6 +36,7 @@ export const FullHeightCenteredContainer: React.FC<ContainerProps> = ({
             alignItems="center"
             textAlign="center"
             className={className}
+            {...rest}
         >
             {children}
         </Box>
@@ -49,7 +50,8 @@ export const FullHeightCenteredContainer: React.FC<ContainerProps> = ({
 export const ViewHeightCenteredContainer: React.FC<ContainerProps> = ({
     className: classNameProp,
     dark,
-    children
+    children,
+    ...rest
 }) => {
     const classes = useStyles();
     const className = classNames(dark ? classes.dark : null, classNameProp);
@@ -62,6 +64,7 @@ export const ViewHeightCenteredContainer: React.FC<ContainerProps> = ({
             alignItems="center"
             textAlign="center"
             className={className}
+            {...rest}
         >
             {children}
         </Box>
