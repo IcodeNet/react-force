@@ -7,6 +7,7 @@ import { storiesOf } from '@storybook/react';
 import { StoryDecorator } from '../../test/StoryDecorator';
 import { SimpleAppBar } from '..';
 import {
+    FlexContainer,
     CenteredContainer,
     HorizontalContainer,
     VerticalContainer,
@@ -38,6 +39,21 @@ const useStyles = makeStyles((theme: Theme) => ({
         backgroundColor: theme.palette.secondary.main
     }
 }));
+
+const FlexContainerExample = () => {
+    const theme: Theme = useTheme();
+    const lightColor = lighten(theme.palette.primary.main, 0.7);
+    return (
+        <ViewVerticalContainer>
+            <SimpleAppBar>React Force</SimpleAppBar>
+            <FlexContainer bgcolor={lightColor} p={2}>
+                <Typography component="h1" variant="h3">
+                    Flex Container
+                </Typography>
+            </FlexContainer>
+        </ViewVerticalContainer>
+    );
+};
 
 const CenteredContainerExample = () => {
     const theme: Theme = useTheme();
@@ -100,6 +116,12 @@ const VerticalContainerExample = () => {
     );
 };
 
+// For scrolling to work correctly, the scrolling container must set overflow
+// to 'auto'. However, more importantly, the parent of the scrolling container
+// should have min-height set to 0. Without this, scrolling with not work. See
+// the two StackOverflow questions below:
+// https://stackoverflow.com/questions/55896508/nested-scrolling-containers-using-flexbox
+// https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
 const ScrollingContainerExample = () => {
     const classes = useStyles();
     return (
@@ -175,6 +197,7 @@ const ViewVerticalContainerExample = () => {
 
 storiesOf('Containers', module)
     .addDecorator(StoryDecorator)
+    .add('Flex Container', () => <FlexContainerExample />)
     .add('Centered Container', () => <CenteredContainerExample />)
     .add('Horizontal Container', () => <HorizontalContainerExample />)
     .add('Vertical Container', () => <VerticalContainerExample />)

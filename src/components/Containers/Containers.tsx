@@ -2,6 +2,18 @@ import React from 'react';
 import Box, { BoxProps } from '@material-ui/core/Box';
 
 /**
+ * FlexContainer
+ * - flex: 1
+ */
+export const FlexContainer: React.FC<BoxProps> = ({ children, ...rest }) => {
+    return (
+        <Box flex="1" {...rest}>
+            {children}
+        </Box>
+    );
+};
+
+/**
  * HorizontalContainer
  * - flex: 1
  * - flexDirection: row

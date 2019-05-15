@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'test';
 import {
+    FlexContainer,
     CenteredContainer,
     HorizontalContainer,
     VerticalContainer,
@@ -16,6 +17,11 @@ import 'jest-dom/extend-expect';
 const content = 'Test Content';
 
 describe('Containers', () => {
+    it('FlexContainer renders its content', () => {
+        const { getByText } = render(<FlexContainer>{content}</FlexContainer>);
+        expect(getByText(content)).toBeInTheDocument();
+    });
+
     it('CenteredContainer renders its content', () => {
         const { getByText } = render(
             <CenteredContainer>{content}</CenteredContainer>
