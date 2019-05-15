@@ -1,8 +1,12 @@
 import React from 'react';
 import { render } from 'test';
 import {
-    FullHeightCenteredContainer,
-    ViewHeightCenteredContainer
+    CenteredContainer,
+    HorizontalContainer,
+    VerticalContainer,
+    ViewCenteredContainer,
+    ViewHorizontalContainer,
+    ViewVerticalContainer
 } from './Containers';
 
 // TODO: Move these imports to setupTests.ts
@@ -12,16 +16,44 @@ import 'jest-dom/extend-expect';
 const content = 'Test Content';
 
 describe('Containers', () => {
-    it('FullHeightCenteredContainer renders its content', () => {
+    it('CenteredContainer renders its content', () => {
         const { getByText } = render(
-            <FullHeightCenteredContainer>{content}</FullHeightCenteredContainer>
+            <CenteredContainer>{content}</CenteredContainer>
         );
         expect(getByText(content)).toBeInTheDocument();
     });
 
-    it('ViewHeightCenteredContainer renders its content', () => {
+    it('HorizontalContainer renders its content', () => {
         const { getByText } = render(
-            <ViewHeightCenteredContainer>{content}</ViewHeightCenteredContainer>
+            <HorizontalContainer>{content}</HorizontalContainer>
+        );
+        expect(getByText(content)).toBeInTheDocument();
+    });
+
+    it('VerticalContainer renders its content', () => {
+        const { getByText } = render(
+            <VerticalContainer>{content}</VerticalContainer>
+        );
+        expect(getByText(content)).toBeInTheDocument();
+    });
+
+    it('ViewCenteredContainer renders its content', () => {
+        const { getByText } = render(
+            <ViewCenteredContainer>{content}</ViewCenteredContainer>
+        );
+        expect(getByText(content)).toBeInTheDocument();
+    });
+
+    it('ViewHorizontalContainer renders its content', () => {
+        const { getByText } = render(
+            <ViewHorizontalContainer>{content}</ViewHorizontalContainer>
+        );
+        expect(getByText(content)).toBeInTheDocument();
+    });
+
+    it('ViewVerticalContainer renders its content', () => {
+        const { getByText } = render(
+            <ViewVerticalContainer>{content}</ViewVerticalContainer>
         );
         expect(getByText(content)).toBeInTheDocument();
     });

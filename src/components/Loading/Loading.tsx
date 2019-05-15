@@ -1,11 +1,13 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { ViewHeightCenteredContainer } from '..';
+import { ViewCenteredContainer } from '..';
 
 export const Loading = () => {
     return (
-        <ViewHeightCenteredContainer data-testid="loading">
-            <Typography variant="h5">Loading...</Typography>
-        </ViewHeightCenteredContainer>
+        <ViewCenteredContainer data-testid="loading" p={2}>
+            <Typography component="h1" variant="h3">
+                Loading...
+            </Typography>
+        </ViewCenteredContainer>
     );
 };
