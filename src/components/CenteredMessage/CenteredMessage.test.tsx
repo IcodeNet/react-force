@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'test';
 import { CenteredMessage } from './CenteredMessage';
+import { Loading } from './Loading';
+import { NotFound } from './NotFound';
 
 // TODO: Move these imports to setupTests.ts
 import 'react-testing-library/cleanup-after-each';
@@ -12,6 +14,22 @@ describe('<CenteredMessage />', () => {
         const { getByText } = render(
             <CenteredMessage>{message}</CenteredMessage>
         );
+        expect(getByText(message)).toBeInTheDocument();
+    });
+});
+
+describe('<Loading />', () => {
+    it('renders the loading message', () => {
+        const message = 'Loading...';
+        const { getByText } = render(<Loading />);
+        expect(getByText(message)).toBeInTheDocument();
+    });
+});
+
+describe('<NotFound />', () => {
+    it('renders the not found message', () => {
+        const message = 'Page Not Found';
+        const { getByText } = render(<NotFound />);
         expect(getByText(message)).toBeInTheDocument();
     });
 });

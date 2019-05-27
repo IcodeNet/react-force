@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { storiesOf } from '@storybook/react';
 import { StoryDecorator } from '../../test/StoryDecorator';
-import { SimpleAppBar } from '..';
+import { Header, HeaderTitle } from '..';
 import {
     FlexContainer,
     CenteredContainer,
@@ -40,12 +40,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     }
 }));
 
+const StoryHeader = () => (
+    <Header>
+        <HeaderTitle>React Force</HeaderTitle>
+    </Header>
+);
+
 const FlexContainerExample = () => {
     const theme: Theme = useTheme();
     const lightColor = lighten(theme.palette.primary.main, 0.7);
     return (
         <ViewVerticalContainer>
-            <SimpleAppBar>React Force</SimpleAppBar>
+            <StoryHeader />
             <FlexContainer bgcolor={lightColor} p={2}>
                 <Typography component="h1" variant="h3">
                     Flex Container
@@ -60,7 +66,7 @@ const CenteredContainerExample = () => {
     const lightColor = lighten(theme.palette.primary.main, 0.7);
     return (
         <ViewVerticalContainer>
-            <SimpleAppBar>React Force</SimpleAppBar>
+            <StoryHeader />
             <CenteredContainer bgcolor={lightColor} p={2}>
                 <Typography component="h1" variant="h3">
                     Centered Container
@@ -76,7 +82,7 @@ const HorizontalContainerExample = () => {
     const rightColor = theme.palette.secondary.main;
     return (
         <ViewVerticalContainer>
-            <SimpleAppBar>React Force</SimpleAppBar>
+            <StoryHeader />
             <HorizontalContainer>
                 <VerticalContainer bgcolor={leftColor} p={2}>
                     <Typography component="h1" variant="h3">
@@ -99,7 +105,7 @@ const VerticalContainerExample = () => {
     const bottomColor = theme.palette.secondary.main;
     return (
         <ViewVerticalContainer>
-            <SimpleAppBar>React Force</SimpleAppBar>
+            <StoryHeader />
             <VerticalContainer>
                 <VerticalContainer bgcolor={topColor} p={2}>
                     <Typography component="h1" variant="h3">
@@ -126,7 +132,7 @@ const ScrollingContainerExample = () => {
     const classes = useStyles();
     return (
         <ViewVerticalContainer>
-            <SimpleAppBar>React Force</SimpleAppBar>
+            <StoryHeader />
             <HorizontalContainer minHeight={0}>
                 <div className={classes.lhs}>
                     {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(i => (
