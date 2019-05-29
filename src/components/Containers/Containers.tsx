@@ -122,3 +122,15 @@ export const ViewCenteredContainer: React.FC<BoxProps> = ({
         </Box>
     );
 };
+
+/**
+ * NarrowContainer
+ * 320px wide centered container. Useful for mobile-friendly content
+ */
+export const NarrowContainer: React.FC<BoxProps> = ({ children, ...rest }) => {
+    return (
+        <Box width={320} m="0 auto" {...rest}>
+            {children}
+        </Box>
+    );
+};

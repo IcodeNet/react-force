@@ -7,7 +7,8 @@ import {
     VerticalContainer,
     ViewCenteredContainer,
     ViewHorizontalContainer,
-    ViewVerticalContainer
+    ViewVerticalContainer,
+    NarrowContainer
 } from './Containers';
 
 // TODO: Move these imports to setupTests.ts
@@ -60,6 +61,13 @@ describe('Containers', () => {
     it('ViewVerticalContainer renders its content', () => {
         const { getByText } = render(
             <ViewVerticalContainer>{content}</ViewVerticalContainer>
+        );
+        expect(getByText(content)).toBeInTheDocument();
+    });
+
+    it('NarrowContainer renders its content', () => {
+        const { getByText } = render(
+            <NarrowContainer>{content}</NarrowContainer>
         );
         expect(getByText(content)).toBeInTheDocument();
     });

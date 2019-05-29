@@ -13,7 +13,8 @@ import {
     VerticalContainer,
     ViewCenteredContainer,
     ViewHorizontalContainer,
-    ViewVerticalContainer
+    ViewVerticalContainer,
+    NarrowContainer
 } from './Containers';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -201,6 +202,26 @@ const ViewVerticalContainerExample = () => {
     );
 };
 
+const NarrowContainerExample = () => {
+    const theme: Theme = useTheme();
+    const lightColor = lighten(theme.palette.primary.main, 0.7);
+    return (
+        <ViewVerticalContainer>
+            <StoryHeader />
+            <NarrowContainer
+                bgcolor={lightColor}
+                p={2}
+                flex="1"
+                textAlign="center"
+            >
+                <Typography component="h1" variant="h3">
+                    Narrow Container
+                </Typography>
+            </NarrowContainer>
+        </ViewVerticalContainer>
+    );
+};
+
 storiesOf('Containers', module)
     .addDecorator(StoryDecorator)
     .add('Flex Container', () => <FlexContainerExample />)
@@ -210,4 +231,5 @@ storiesOf('Containers', module)
     .add('Scrolling Container', () => <ScrollingContainerExample />)
     .add('View Centered Container', () => <ViewCenteredContainerExample />)
     .add('View Horizontal Container', () => <ViewHorizontalContainerExample />)
-    .add('View Vertical Container', () => <ViewVerticalContainerExample />);
+    .add('View Vertical Container', () => <ViewVerticalContainerExample />)
+    .add('Narrow Container', () => <NarrowContainerExample />);
