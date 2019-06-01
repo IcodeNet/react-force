@@ -2,10 +2,6 @@ import React from 'react';
 import { render } from 'test';
 import { ErrorBoundary } from './ErrorBoundary';
 
-// TODO: Move these imports to setupTests.ts
-import 'react-testing-library/cleanup-after-each';
-import 'jest-dom/extend-expect';
-
 beforeEach(() => {
     // When an error is thrown a bunch of console.errors are called even though
     // the error boundary handles the error. This makes the test output noisy,

@@ -11,10 +11,6 @@ import {
     NarrowContainer
 } from './Containers';
 
-// TODO: Move these imports to setupTests.ts
-import 'react-testing-library/cleanup-after-each';
-import 'jest-dom/extend-expect';
-
 const content = 'Test Content';
 
 describe('Containers', () => {

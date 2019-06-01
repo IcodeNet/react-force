@@ -4,10 +4,6 @@ import { CenteredMessage } from './CenteredMessage';
 import { Loading } from './Loading';
 import { NotFound } from './NotFound';
 
-// TODO: Move these imports to setupTests.ts
-import 'react-testing-library/cleanup-after-each';
-import 'jest-dom/extend-expect';
-
 describe('<CenteredMessage />', () => {
     it('renders a centered message', () => {
         const message = 'Hello!';

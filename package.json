@@ -145,8 +145,8 @@
       "tsx",
       "js"
     ],
-    "setupFiles": [
-      "./src/test/setupTests.ts"
+    "setupFilesAfterEnv": [
+      "./src/test/setupTestsAfterEnv.ts"
     ],
     "coverageThreshold": {
       "global": {
