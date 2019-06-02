@@ -8,6 +8,7 @@ import {
     ViewCenteredContainer,
     ViewHorizontalContainer,
     ViewVerticalContainer,
+    ScrollingContainer,
     NarrowContainer
 } from './Containers';
 
@@ -57,6 +58,13 @@ describe('Containers', () => {
     it('ViewVerticalContainer renders its content', () => {
         const { getByText } = render(
             <ViewVerticalContainer>{content}</ViewVerticalContainer>
+        );
+        expect(getByText(content)).toBeInTheDocument();
+    });
+
+    it('ScrollingContainer renders its content', () => {
+        const { getByText } = render(
+            <ScrollingContainer>{content}</ScrollingContainer>
         );
         expect(getByText(content)).toBeInTheDocument();
     });

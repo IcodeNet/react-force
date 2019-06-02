@@ -14,19 +14,11 @@ import {
     ViewCenteredContainer,
     ViewHorizontalContainer,
     ViewVerticalContainer,
+    ScrollingContainer,
     NarrowContainer
 } from './Containers';
 
 const useStyles = makeStyles((theme: Theme) => ({
-    lhs: {
-        minWidth: 320,
-        overflow: 'auto',
-        backgroundColor: lighten(theme.palette.primary.main, 0.8)
-    },
-    rhs: {
-        flex: 1,
-        overflow: 'auto'
-    },
     lhsCard: {
         borderRadius: 4,
         margin: theme.spacing(2),
@@ -123,33 +115,6 @@ const VerticalContainerExample = () => {
     );
 };
 
-// For scrolling to work correctly, the scrolling container must set overflow
-// to 'auto'. However, more importantly, the parent of the scrolling container
-// should have min-height set to 0. Without this, scrolling with not work. See
-// the two StackOverflow questions below:
-// https://stackoverflow.com/questions/55896508/nested-scrolling-containers-using-flexbox
-// https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
-const ScrollingContainerExample = () => {
-    const classes = useStyles();
-    return (
-        <ViewVerticalContainer>
-            <StoryHeader />
-            <HorizontalContainer minHeight={0}>
-                <div className={classes.lhs}>
-                    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(i => (
-                        <div className={classes.lhsCard} />
-                    ))}
-                </div>
-                <div className={classes.rhs}>
-                    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(i => (
-                        <div className={classes.rhsCard} />
-                    ))}
-                </div>
-            </HorizontalContainer>
-        </ViewVerticalContainer>
-    );
-};
-
 const ViewCenteredContainerExample = () => {
     const theme: Theme = useTheme();
     const lightColor = lighten(theme.palette.primary.main, 0.7);
@@ -202,6 +167,35 @@ const ViewVerticalContainerExample = () => {
     );
 };
 
+// For scrolling to work correctly, the scrolling container must set overflow
+// to 'auto'. However, more importantly, the parent of the scrolling container
+// should have min-height set to 0. Without this, scrolling with not work. See
+// the two StackOverflow questions below:
+// https://stackoverflow.com/questions/55896508/nested-scrolling-containers-using-flexbox
+// https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
+const ScrollingContainerExample = () => {
+    const classes = useStyles();
+    const theme: Theme = useTheme();
+    const lightColor = lighten(theme.palette.primary.main, 0.8);
+    return (
+        <ViewVerticalContainer>
+            <StoryHeader />
+            <HorizontalContainer minHeight={0}>
+                <ScrollingContainer minWidth={320} bgcolor={lightColor}>
+                    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(i => (
+                        <div className={classes.lhsCard} />
+                    ))}
+                </ScrollingContainer>
+                <ScrollingContainer flex="1">
+                    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(i => (
+                        <div className={classes.rhsCard} />
+                    ))}
+                </ScrollingContainer>
+            </HorizontalContainer>
+        </ViewVerticalContainer>
+    );
+};
+
 const NarrowContainerExample = () => {
     const theme: Theme = useTheme();
     const lightColor = lighten(theme.palette.primary.main, 0.7);
@@ -228,8 +222,8 @@ storiesOf('Containers', module)
     .add('Centered Container', () => <CenteredContainerExample />)
     .add('Horizontal Container', () => <HorizontalContainerExample />)
     .add('Vertical Container', () => <VerticalContainerExample />)
-    .add('Scrolling Container', () => <ScrollingContainerExample />)
     .add('View Centered Container', () => <ViewCenteredContainerExample />)
     .add('View Horizontal Container', () => <ViewHorizontalContainerExample />)
     .add('View Vertical Container', () => <ViewVerticalContainerExample />)
+    .add('Scrolling Container', () => <ScrollingContainerExample />)
     .add('Narrow Container', () => <NarrowContainerExample />);

@@ -1,5 +1,13 @@
 import React from 'react';
 import Box, { BoxProps } from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/styles';
+import classNames from 'classnames';
+
+const useStyles = makeStyles({
+    scroll: {
+        overflow: 'auto'
+    }
+});
 
 /**
  * FlexContainer
@@ -118,6 +126,24 @@ export const ViewCenteredContainer: React.FC<BoxProps> = ({
             textAlign="center"
             {...rest}
         >
+            {children}
+        </Box>
+    );
+};
+
+/**
+ * ScrollingContainer
+ * - overflow: 'auto'
+ */
+export const ScrollingContainer: React.FC<BoxProps> = ({
+    className: classNameProp,
+    children,
+    ...rest
+}) => {
+    const classes = useStyles();
+    const className = classNames(classes.scroll, classNameProp);
+    return (
+        <Box className={className} {...rest}>
             {children}
         </Box>
     );
